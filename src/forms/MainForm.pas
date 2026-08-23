@@ -65,9 +65,6 @@ type
     /// <summary>Filtra a grade conforme o texto informado pelo usuário.</summary>
     procedure edtSearchChange(Sender: TObject);
 
-    /// <summary>Direciona o foco ao campo ao clicar no placeholder.</summary>
-    procedure lblSearchHintClick(Sender: TObject);
-
     /// <summary>Solicita o cancelamento da leitura em andamento.</summary>
     procedure btnCancelClick(Sender: TObject);
 
@@ -89,9 +86,6 @@ type
 
     /// <summary>Recalcula os totalizadores dos registros visíveis.</summary>
     procedure UpdateTotals;
-
-    /// <summary>Exibe ou oculta o placeholder do campo de pesquisa.</summary>
-    procedure UpdateSearchHint;
 
     /// <summary>Ordena o mapa de registros visíveis pela coluna atual.</summary>
     procedure SortVisibleIndexes;
@@ -158,7 +152,6 @@ begin
   grdData.ColWidths[7] := 132;
   grdData.DefaultRowHeight := 36;
 
-  UpdateSearchHint;
   UpdateSummary('Selecione uma pasta para começar.');
 end;
 
@@ -491,25 +484,11 @@ end;
 
 procedure TMainWindow.edtSearchChange(Sender: TObject);
 begin
-  UpdateSearchHint;
   ApplyFilter;
   if Trim(edtSearch.Text) = '' then
     UpdateSummary('Exibindo todos os documentos.')
   else
     UpdateSummary('Filtro de pesquisa aplicado.');
-end;
-
-procedure TMainWindow.UpdateSearchHint;
-begin
-//  lblSearchHint.Visible := edtSearch.Text = '';
-//  if lblSearchHint.Visible then
-//    lblSearchHint.BringToFront;
-end;
-
-procedure TMainWindow.lblSearchHintClick(Sender: TObject);
-begin
-  if edtSearch.CanFocus then
-    edtSearch.SetFocus;
 end;
 
 procedure TMainWindow.FillGridRow(const RowIndex, DataIndex: Integer);
