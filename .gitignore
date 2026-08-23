@@ -3,4 +3,13 @@ Win64/
 *.dcu
 *.exe
 *.local
+*.bak
 *.identcache
+__history/
+__recovery/
+*.~*
+*.stat
+*.tvsconfig
+/Unit1.pas
+/Unit1.dfm
+/NFeExplorer.Artwork/
