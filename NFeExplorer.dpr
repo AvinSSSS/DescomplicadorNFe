@@ -2,10 +2,10 @@
 
 uses
   Vcl.Forms,
-  MainForm in 'MainForm.pas' {MainWindow},
-  NFeReader in 'NFeReader.pas',
-  EditNFeForm in 'EditNFeForm.pas',
-  XmlViewerForm in 'XmlViewerForm.pas' {XmlViewerWindow},
+  MainForm in 'src\forms\MainForm.pas' {MainWindow},
+  NFeReader in 'src\NFeReader.pas',
+  EditNFeForm in 'src\forms\EditNFeForm.pas',
+  XmlViewerForm in 'src\forms\XmlViewerForm.pas' {XmlViewerWindow},
   Vcl.Themes,
   Vcl.Styles;
 

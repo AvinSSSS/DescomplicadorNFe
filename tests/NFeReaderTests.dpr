@@ -7,7 +7,7 @@ uses
   DUnitX.Loggers.Console,
   DUnitX.TestFramework,
   DUnitX.TestRunner,
-  NFeReader in '..\NFeReader.pas',
+  NFeReader in '..\src\NFeReader.pas',
   NFeReaderTests in 'NFeReaderTests.pas';
 
 var

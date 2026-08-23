@@ -25,11 +25,27 @@ documento fiscal sai do computador.
 
 - Delphi 13 e VCL para a interface Windows.
 - `Xml.XMLDoc` e `Xml.XMLIntf` para leitura dos documentos.
-- `NFeReader.pas`: interpretação e serialização CSV.
-- `MainForm.pas`: seleção, processamento assíncrono, pesquisa, grid e exportação.
-- `EditNFeForm.pas`: edição de um documento carregado.
-- `XmlViewerForm.pas`: visualização local e formatada do XML.
+- `src/NFeReader.pas`: interpretação e serialização CSV.
+- `src/forms/MainForm.pas`: seleção, processamento assíncrono, pesquisa, grid e exportação.
+- `src/forms/EditNFeForm.pas`: edição de um documento carregado.
+- `src/forms/XmlViewerForm.pas`: visualização local e formatada do XML.
 - `tests/NFeReaderTests.pas`: testes automatizados do leitor e do CSV.
+
+## 🗂️ Estrutura do projeto
+
+```text
+DescomplicadorNFe/
+├── NFeExplorer.dpr          # Entrada da aplicação
+├── NFeExplorer.dproj        # Configuração do projeto Delphi
+├── src/
+│   ├── NFeReader.pas        # Leitura, validação e exportação
+│   └── forms/
+│       ├── MainForm.*       # Tela principal
+│       ├── EditNFeForm.*    # Edição de registros
+│       └── XmlViewerForm.*  # Visualização local do XML
+├── tests/                   # Projeto e suíte DUnitX
+└── README.md
+```
 
 ## 🚀 Como executar
 

@@ -125,13 +125,13 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MainForm.pas">
+        <DCCReference Include="src\forms\MainForm.pas">
             <Form>MainWindow</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="NFeReader.pas"/>
-        <DCCReference Include="EditNFeForm.pas"/>
-        <DCCReference Include="XmlViewerForm.pas">
+        <DCCReference Include="src\NFeReader.pas"/>
+        <DCCReference Include="src\forms\EditNFeForm.pas"/>
+        <DCCReference Include="src\forms\XmlViewerForm.pas">
             <Form>XmlViewerWindow</Form>
             <FormType>dfm</FormType>
         </DCCReference>
