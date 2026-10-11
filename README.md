@@ -49,7 +49,17 @@ DescomplicadorNFe/
 
 ## 🚀 Como executar
 
-1. Abra `NFeExplorer.dpr` no Delphi.
+Diretório de trabalho: raiz do repositório (`D:/Fontes/Projetos/DescomplicadorNFe`
+no checkout principal, ou a raiz da worktree isolada).
+
+Pré-requisitos: Windows e Delphi 13 com VCL e compilador para a plataforma
+selecionada. Não há instalação npm/pip nem arquivo `.env` da aplicação.
+O [projeto Delphi](NFeExplorer.dproj) usa as macros `BDS` e `BDSCOMMONDIR`
+para localizar arquivos da instalação, incluindo estilos VCL; mantenha essas
+referências disponíveis no ambiente do IDE. `Platform` e `Config` selecionam
+plataforma e configuração, e as saídas ficam em `./<Platform>/<Config>`.
+
+1. Abra [NFeExplorer.dpr](NFeExplorer.dpr) no Delphi.
 2. Selecione a plataforma **Win32** ou **Win64**.
 3. Compile e execute pelo IDE.
 4. No aplicativo, selecione uma pasta contendo XMLs e clique em **Ler XMLs**.
@@ -63,6 +73,26 @@ DUnitX cobre leitura com namespace, data de emissão legada, XML malformado,
 campos obrigatórios ausentes, bloqueio de DTD, edição do XML, proteção do CSV e
 compactação do XML exportado.
 
+O projeto de testes depende das units `DUnitX.TestFramework`,
+`DUnitX.TestRunner` e `DUnitX.Loggers.Console`; elas devem estar disponíveis
+no caminho de busca do Delphi. O repositório não inclui as fontes do DUnitX
+nem um `.dproj` de testes. Abra o `.dpr` a partir de `tests/`, mantendo sua
+referência relativa a `../src/NFeReader.pas`. O runner define código de saída
+1 se algum teste falhar ou ocorrer uma exceção.
+
+Os oito testes em [NFeReaderTests.pas](tests/NFeReaderTests.pas) exercitam o
+leitor e a serialização, sem abrir formulários. Os XMLs são strings fictícias
+da própria suíte: `CreateXmlFile` grava arquivos temporários em UTF-8 e cada
+teste que os utiliza os remove em `finally`. Não é preciso obter XMLs de clientes.
+Para um teste manual, copie o XML da constante `Xml` em `ReadsNamespacedNFe`
+para um arquivo `.xml` numa pasta temporária separada e selecione essa pasta
+no aplicativo.
+
+A suíte não cobre a interface, progresso/cancelamento, ordenação, exportação
+pela tela ou abertura do CSV no Excel. Esses cenários precisam de verificação
+manual. A leitura dos fontes e a conferência dos links abaixo não substituem
+compilação nem execução dos testes no IDE.
+
 ## 🧪 Cenários recomendados de teste
 
 - XML autorizado e completo.
@@ -72,6 +102,11 @@ compactação do XML exportado.
 - Pasta vazia e pasta com centenas de documentos.
 - CSV aberto no Excel, conferindo acentos e valores.
 - Pasta grande, conferindo progresso e cancelamento.
+- Exportação após pesquisa/ordenação: atualmente `btnExportClick` em
+  [MainForm.pas](src/forms/MainForm.pas) percorre todos os registros carregados
+  (`FData`), na ordem de carregamento, mesmo quando a grade está filtrada ou
+  ordenada. A exportação da visão atual está pendente na
+  [issue #2](https://github.com/AvinSSSS/DescomplicadorNFe/issues/2).
 
 ## 🔐 Privacidade e limitações
 
